@@ -24,7 +24,7 @@ const ListGroup = ({ body, color, children, page }) => {
 	const groupRef = useRef(null)
 
 	const deleteFun = () => {
-		groupRef.current.swiper.slideTo(1, 100)
+		groupRef.current.swiper.slideTo(1, 300)
 		gsap.to(groupRef.current, {
 			duration: 0.8,
 			height: 0,
