@@ -42,7 +42,72 @@ export const useButtonAdd = () => {
 					},
 					'-=0.4'
 				)
+			gsap.to('#button', {
+				rotate: '0deg',
+				ease: 'back.inOut(2)',
+				duration: 0.6,
+			})
 		} else {
+			gsap
+				.timeline()
+				.to('#cont-all', {
+					duration: 0,
+					pointerEvents: 'none',
+				})
+				.to('#cont-add-2', {
+					overflow: 'visible',
+				})
+				.to(
+					'#item-add-2',
+					{
+						opacity: 0,
+						scale: 0,
+						duration: 0.6,
+						y: '2.5rem',
+						ease: 'back.in(0.5)',
+						stagger: 0.1,
+					},
+					'<'
+				)
+
+				.to(
+					'#cont-2',
+					{
+						height: '100%',
+						duration: 0.6,
+						ease: 'back.in(0.5)',
+					},
+					'-=0.4'
+				)
+
+				.to(
+					'#cont-2',
+					{
+						width: '100%',
+						duration: 0.6,
+						ease: 'back.in(0.5)',
+					},
+					'-=0.4'
+				)
+				.to(
+					'#cont-2',
+					{
+						borderRadius: '8px',
+						duration: 0.6,
+						ease: 'ease.inOut',
+					},
+					'-=0.3'
+				)
+				.to(
+					'#cont-2',
+					{
+						backdropFilter: 'blur(0px)',
+						background: 'rgba(118, 118, 128, 0)',
+						duration: 0.6,
+						ease: 'back.out(0.5)',
+					},
+					'-=0.2'
+				)
 			gsap
 				.timeline()
 				.to(
@@ -75,6 +140,12 @@ export const useButtonAdd = () => {
 					},
 					'-=0.5'
 				)
+
+			gsap.to('#button', {
+				rotate: '135deg',
+				ease: 'back.inOut(2)',
+				duration: 0.6,
+			})
 		}
 		setOpen(prev => !prev)
 	}

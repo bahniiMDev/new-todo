@@ -21,6 +21,11 @@ body {
     @apply bg-[#333] py-2.5 px-5 w-full text-white rounded-xl text-base placeholder:text-gray-300 opacity-0 scale-0 translate-y-10 transition-shadow
   }
 
+  .input-add-2 {
+    @apply bg-[#333] py-2.5 px-5 w-full text-white rounded-xl text-base placeholder:text-gray-300 opacity-0 scale-0 translate-y-10 transition-shadow
+  }
+
+
 
   .select-add {
     @apply bg-[#333] py-2.5 px-5 w-full rounded-xl text-base transition-shadow opacity-0 scale-0 translate-y-10
@@ -30,19 +35,50 @@ body {
     @apply bg-green py-2.5 px-5 w-full text-white rounded-xl text-base placeholder:text-gray-300 opacity-0 scale-0 translate-y-10
   }
 
+  .button-add-2 {
+    @apply bg-green py-2.5 px-5 w-full text-white rounded-xl text-base placeholder:text-gray-300 opacity-0 scale-0 translate-y-10
+  }
+
+  .line-close {
+    @apply absolute bg-[#fff] w-[45%] h-[2px] rounded-full rotate-[45deg]
+  }
+
+  .line-close-2 {
+    @apply absolute bg-[#fff] w-[45%] h-[2px] rounded-full rotate-[-45deg]
+  }
+
+  .close-btn:hover .line-close-2,
+  .close-btn:hover .line-close {
+    @apply bg-red
+  }
+
+  /*.close-btn:focus .line-close-2,
+  .close-btn:focus .line-close {
+    @apply bg-[#fff]
+  }*/
+
 
 }
+
+.line-close-2,
+.line-close {
+  transition: all 0.4s ease;
+}
+
+
 
 #cont {
   max-width: calc(100% - 2rem);
 }
 
-.button-add {
+.button-add,
+.button-add-2 {
   box-shadow: 0px 0px 0px 0px rgb(50, 215, 75);
   transition: box-shadow 0.4s ease;
 }
 
-.button-add:hover {
+.button-add:hover,
+.button-add-2:hover {
   box-shadow: 0px 5px 30px -10px rgb(50, 215, 75);
 }
 
@@ -83,7 +119,7 @@ body {
   background-color: #fff;
 }
 
-.input-add:focus,
+input:focus,
 select:focus {
   border: none;
   outline: none;
@@ -120,10 +156,13 @@ select::-ms-expand {
   display: none;
 }
 
-
+select::placeholder {
+  font-weight: 600 !important;
+}
 
 select:focus,
-.input-add:focus {
+.input-add:focus,
+.input-add-2:focus {
   box-shadow: 0 0 0px 2px rgb(10, 132, 255);
   box-shadow: 0 0 0 2px -moz-mac-focusring;
 }
@@ -137,12 +176,14 @@ select:focus,
   padding: .6em .8em .5em 1.4em;
 }
 
-.input-add::-webkit-keygen-select {
+.input-add::-webkit-keygen-select,
+.input-add-2::-webkit-keygen-select {
   text-shadow: 10px 10px 10px #000;
   background: #000;
 }
 
 .input-add,
+.input-add-2,
 .select-add {
   font-size: 16px !important;
   transition: box-shadow 0.4 ease;
@@ -178,12 +219,12 @@ select:focus,
   margin-bottom: 0.5rem;
 }
 
-.input-add,
 .select-add {
   font-weight: 600;
 }
 
-.input-add {
+.input-add,
+.input-add-2 {
   font-weight: 700;
 }
 
@@ -250,4 +291,11 @@ select {
 
 .icon-reject:hover svg path {
   fill: #ffffff !important;
+}
+
+
+.blur-group {
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 8px !important;
 }

@@ -94,8 +94,8 @@ const CreateForm = ({ onClickButton, inputRef, errors, setErrors }) => {
 				<p className={`label-error ${errors.select && 'activ'}`}>
 					you can't create task if drop list no selected
 				</p>
-				<Button className='button-add' id='item-add'>
-					Add
+				<Button className='button-add font-bold' id='item-add'>
+					Add Task
 				</Button>
 			</form>
 		</div>

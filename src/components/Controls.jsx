@@ -3,24 +3,22 @@ import MenuButton from './MenuButton'
 import MenuGroup from './MenuGroup'
 
 const Controls = () => {
-	const [size, setSize] = useState(['0', '0'])
+	const [size, setSize] = useState([0, 0])
 	const [isMobile, setIsMobile] = useState(
 		window.matchMedia('(width < 768px)').matches
 	)
 	const fun = () => {
 		setIsMobile(window.matchMedia('(width < 768px)').matches)
 	}
-
-	window.addEventListener('resize', fun)
+	useEffect(() => {
+		window.addEventListener('resize', fun)
+	}, [isMobile])
 	useEffect(() => {
 		const el = document.querySelector('.menu-position')
 		setSize([el.offsetLeft, el.offsetTop])
-		return () => {
-			window.removeEventListener('resize', fun)
-		}
 	}, [isMobile])
 	return (
-		<>
+		<div className=''>
 			<MenuButton
 				show={true}
 				style={{
@@ -30,8 +28,8 @@ const Controls = () => {
 					zIndex: 20,
 				}}
 			/>
-			<MenuGroup />
-		</>
+			<MenuGroup size={size} />
+		</div>
 	)
 }
 

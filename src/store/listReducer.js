@@ -6,6 +6,7 @@ const defaultState = {
 	inputSearch: '',
 	itemsToShow: [],
 	groupValue: '',
+	inputGroup: '',
 }
 
 const add = 'add'
@@ -18,6 +19,8 @@ const inputSet = 'input-set'
 const setGroupValue = 'set-g'
 const changeSucsessShow = 'sef'
 const deleteGroup = 'delete-g'
+const addGroup = 'add-g'
+const changeInputGroup = 'cig'
 
 export const listReducer = (state = defaultState, action) => {
 	switch (action.type) {
@@ -74,11 +77,19 @@ export const listReducer = (state = defaultState, action) => {
 				groupValue: action.payload,
 			}
 		case deleteGroup:
-			console.log()
-
 			return {
 				...state,
 				groups: state.groups.filter(item => item.body !== action.payload),
+			}
+		case addGroup:
+			return {
+				...state,
+				groups: [{ body: state.inputGroup, color: '#000' }, ...state.groups],
+			}
+		case changeInputGroup:
+			return {
+				...state,
+				inputGroup: action.payload,
 			}
 		default:
 			return state
@@ -122,5 +133,13 @@ export const groupSet = payload => ({
 })
 export const deleteGroupFun = payload => ({
 	type: deleteGroup,
+	payload,
+})
+export const addGroupFun = payload => ({
+	type: addGroup,
+	payload,
+})
+export const changeInputFun = payload => ({
+	type: changeInputGroup,
 	payload,
 })

@@ -8,7 +8,7 @@ const AddButton = forwardRef(({ onClickButton, setErrors, open }, inputRef) => {
 				onClickButton()
 				setErrors({ input: false, select: false })
 			}}
-			className=' bg-blue absolute right-0 bottom-0 w-14 h-14 flex-center cursor-pointer z-10'
+			className=' bg-blue absolute right-0 bottom-0 w-14 h-14 flex-center cursor-pointer z-10 rotate-0'
 			style={{
 				borderRadius: '28px',
 			}}
@@ -17,9 +17,7 @@ const AddButton = forwardRef(({ onClickButton, setErrors, open }, inputRef) => {
 				className={`w-[40%] h-[2.5px] bg-zinc absolute rounded-full`}
 			></span>
 			<span
-				className={`w-[40%] h-[2.5px] bg-zinc absolute rounded-full ${
-					open ? 'rotate-[0deg]' : 'rotate-[90deg]'
-				}`}
+				className={`w-[40%] h-[2.5px] bg-zinc absolute rounded-full rotate-[90deg]`}
 				style={{
 					transition: 'transform 0.4s ease',
 				}}

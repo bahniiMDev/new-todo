@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { animBackClose } from '../animations'
 import { setMenu } from '../store/menuReducer'
 
 const MenuButton = ({ show, style, className }) => {
@@ -10,6 +11,8 @@ const MenuButton = ({ show, style, className }) => {
 	const openFun = () => {
 		dispatch(setMenu(!isOpen))
 		if (isOpen) {
+			animBackClose()
+
 			gsap
 				.timeline({
 					defaults: {
