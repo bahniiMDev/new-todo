@@ -25,7 +25,20 @@ const changeInputGroup = 'cig'
 export const listReducer = (state = defaultState, action) => {
 	switch (action.type) {
 		case add:
-			return { ...state, items: [action.payload, ...state.items] }
+			let arr = state.groupValue
+				? state.items
+						.filter(item => item.group === gstate.roupValue)
+						.filter(item =>
+							item.body.toLowerCase().includes(e.target.value.toLowerCase())
+						)
+				: state.items.filter(item =>
+						item.body.toLowerCase().includes(state.inputSearch)
+				  )
+			return {
+				...state,
+				items: [action.payload, ...state.items],
+				itemsToShow: arr,
+			}
 		case addShow:
 			return { ...state, itemsToShow: [action.payload, ...state.itemsToShow] }
 		case changeSucsess:
