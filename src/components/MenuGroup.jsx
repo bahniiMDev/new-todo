@@ -67,7 +67,6 @@ const MenuGroup = () => {
 				.to('#menu-group', {
 					pointerEvents: 'none',
 					duration: 0,
-					delay: 0,
 				})
 				.to(' #line-3, #line-1', {
 					rotate: '0deg',
@@ -108,6 +107,7 @@ const MenuGroup = () => {
 				x: '-150%',
 				duration: 0.5,
 				ease: 'back.out(1)',
+
 				stagger: 0.05,
 			})
 		}
@@ -158,7 +158,9 @@ const MenuGroup = () => {
 	const onSub = e => {
 		e.preventDefault()
 		dispatch(addGroupFun())
-		dispatch(setMenu(false))
+		setTimeout(() => {
+			dispatch(setMenu(false))
+		}, 600)
 
 		gsap
 			.timeline({
@@ -169,7 +171,7 @@ const MenuGroup = () => {
 			.to('#menu-group', {
 				pointerEvents: 'none',
 				duration: 0,
-				delay: 0,
+				delay: 0.5,
 			})
 			.to(' #line-3, #line-1', {
 				rotate: '0deg',
@@ -201,7 +203,6 @@ const MenuGroup = () => {
 				{
 					width: '65%',
 					duration: 0.3,
-
 					stagger: 0.1,
 				},
 				'-=0.2'
@@ -209,6 +210,7 @@ const MenuGroup = () => {
 
 		gsap.timeline().to('#item-menu', {
 			x: '-150%',
+			delay: 0.5,
 			duration: 0.5,
 			ease: 'back.out(1)',
 			stagger: 0.05,
@@ -253,14 +255,15 @@ const MenuGroup = () => {
 			</p>
 			<GroupButton
 				id='item-menu'
-				className='  translate-x-[-150%] bg-[rgba(32,32,32,1)] group-button rounded-[10px] mb-2 py-2'
+				className='  translate-x-[-150%] bg-[rgba(32,32,32,1)] group-button rounded-[10px] mb-2 py-2 '
 			>
 				{groups.map((item, index) => (
 					<div key={index}>
 						<Link
 							onClick={() => close(item.body)}
 							to={`/posts/${item.body}`}
-							className='text-[12px] py-2.5 px-4 font-medium cursor-pointer text-gray-100 w-full h-full flex items-center'
+							className='text-[12px] py-2.5 px-4 font-medium cursor-pointer text-gray-100 w-full flex items-center have-min '
+							id='link-group'
 						>
 							<div
 								className={`h-[12px] aspect-square mr-4 relative flex-center items-center bg-[${item.color}] rounded-full`}
@@ -290,6 +293,7 @@ const MenuGroup = () => {
 							animOpenClose()
 							setGroupCreate(true)
 						}}
+						id='button-add-g'
 					>
 						Add Group
 						<span className='h-6 flex aspect-square items-center relative justify-center'>
@@ -348,7 +352,7 @@ const MenuGroup = () => {
 										Add Group
 									</Button>
 								</form>
-								<button
+								{/*<button
 									className={`bg-[#333] close-btn rounded-xl w-[44px] h-[44px] mb-6 mr-6 opacity-0 scale-0 translate-y-10 flex items-center justify-center`}
 									id='item-add-2'
 									onClick={() => {
@@ -358,7 +362,7 @@ const MenuGroup = () => {
 								>
 									<span className='line-close-2'></span>
 									<span className='line-close'></span>
-								</button>
+								</button>*/}
 							</div>
 						</div>
 					</div>

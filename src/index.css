@@ -297,5 +297,95 @@ select {
 .blur-group {
   width: 100%;
   height: 100%;
-  border-bottom-left-radius: 8px !important;
+  /*border-bottom-left-radius: 8px !important;*/
+}
+
+
+@keyframes anim {
+  0% {
+    padding: 0rem 1rem;
+    height: 0px;
+  }
+
+  100% {
+    padding: 0.625rem 1rem;
+    height: 38px;
+  }
+}
+
+@keyframes anim2 {
+  0% {
+    opacity: 0;
+    /*transform: translateY(100%);*/
+
+  }
+
+  100% {
+    opacity: 1;
+    /*transform: translateY(0px);*/
+  }
+}
+
+@keyframes anim3 {
+  0% {
+    padding: 0px 2rem;
+    height: 0;
+
+  }
+
+  100% {
+    height: 100%;
+    padding: 2rem 2rem;
+  }
+}
+
+@keyframes anim4 {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+
+  50% {
+    margin-bottom: 0.25rem;
+    opacity: 0;
+    height: 24.5px;
+  }
+
+  100% {
+    margin-bottom: 0.25rem;
+    opacity: 1;
+    height: 24.5px;
+  }
+}
+
+#menu-group {
+  transition: height 0.3s ease;
+}
+
+#link-group {
+  padding: 0rem 1rem;
+  height: 0px;
+  overflow-y: hidden;
+  animation: anim 0.4s ease forwards;
+}
+
+#swiper2 {
+  animation: anim2 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(0px);
+}
+
+#main {
+  transition: height 0.5s ease;
+}
+
+#slide {
+  animation: anim3 0.5s ease forwards;
+  padding: 0 2rem;
+}
+
+#task {
+  animation: anim4 0.5s ease forwards;
+  opacity: 0;
+  height: 0;
 }

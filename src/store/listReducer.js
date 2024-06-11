@@ -82,9 +82,22 @@ export const listReducer = (state = defaultState, action) => {
 				groups: state.groups.filter(item => item.body !== action.payload),
 			}
 		case addGroup:
+			let sum1 = 1
+			state.groups.forEach(item => {
+				if (item.body.includes('void')) {
+					++sum1
+				}
+			})
+
 			return {
 				...state,
-				groups: [{ body: state.inputGroup, color: '#000' }, ...state.groups],
+				groups: [
+					...state.groups,
+					{
+						body: state.inputGroup === '' ? 'void' + sum1 : state.inputGroup,
+						color: '#000',
+					},
+				],
 			}
 		case changeInputGroup:
 			return {

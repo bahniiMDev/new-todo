@@ -9,7 +9,7 @@ import { ShowItems, deleteGroupFun } from '../../store/listReducer'
 import { deleteImg, pinImg } from '../../utils'
 import Task from './Task'
 
-const ListGroup = ({ body, color, children, page }) => {
+const ListGroup = ({ body, color, children, page, i }) => {
 	const { itemsToShow, items, inputSearch } = useSelector(state => state.list)
 	const [hei, setHei] = useState(0)
 	const ref = useRef(null)
@@ -18,8 +18,13 @@ const ListGroup = ({ body, color, children, page }) => {
 	const location = useLocation()
 
 	useEffect(() => {
-		setHei(ref.current.offsetHeight)
+		setTimeout(() => {
+			setHei(ref.current.offsetHeight)
+		}, 601)
 	}, [ref.current, itemsToShow])
+	useEffect(() => {
+		setHei(ref.current.offsetHeight)
+	}, [ref.current, itemsToShow, inputSearch])
 
 	const groupRef = useRef(null)
 
@@ -75,11 +80,16 @@ const ListGroup = ({ body, color, children, page }) => {
 			}, (ref.current.childNodes.length - 1) * 100 + 1205)
 		}
 	}
+	gsap.to('#swiper', { scale: 0 })
 	return (
 		<Swiper
 			ref={groupRef}
-			className=' w-full h-full rounded-[28px] mb-4 origin-center'
+			className='overflow-hidden w-full rounded-[28px] mb-4 origin-center h-full'
 			initialSlide={1}
+			style={{
+				animationDelay: `${i * 0.15}s`,
+			}}
+			id='swiper2'
 			slidesPerView={'auto'}
 			spaceBetween={-28}
 			speed={300}
@@ -102,11 +112,12 @@ const ListGroup = ({ body, color, children, page }) => {
 				/>
 			</SwiperSlide>
 			<SwiperSlide
+				id='slide'
 				ref={ref}
 				className={`p-8 bg-[#353537] rounded-[28px] relative flex 
 				 flex-col w-[100%]  z-[8] ${page ? 'min-h-[70dvh]' : ''}`}
 			>
-				{!page && <Task title={true} body={body} color={color} />}
+				{!page && <Task title={true} body={body} color={color} i={i} />}
 				{children}
 			</SwiperSlide>
 			<SwiperSlide

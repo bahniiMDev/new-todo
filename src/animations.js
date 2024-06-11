@@ -1,11 +1,12 @@
 import gsap from 'gsap'
 
-export const animBackClose = () => {
+export const animBackClose = d => {
 	gsap
 		.timeline()
 		.to('#cont-all', {
 			duration: 0,
 			pointerEvents: 'none',
+			delay: d ? d : 0,
 		})
 		.to('#cont-add-2', {
 			overflow: 'visible',
@@ -50,6 +51,15 @@ export const animBackClose = () => {
 				ease: 'ease.inOut',
 			},
 			'-=0.3'
+		)
+		.to(
+			'#button-add-g',
+			{
+				borderBottomLeftRadius: '8px',
+				duration: 0.6,
+				ease: 'ease.inOut',
+			},
+			'<'
 		)
 		.to(
 			'#cont-2',
@@ -145,6 +155,15 @@ export const animOpenClose = () => {
 				ease: 'ease.inOut',
 			},
 			'-=0.6'
+		)
+		.to(
+			'#button-add-g',
+			{
+				borderBottomLeftRadius: '28px',
+				duration: 0.6,
+				ease: 'ease.inOut',
+			},
+			'<'
 		)
 		.to(
 			'#item-add-2',

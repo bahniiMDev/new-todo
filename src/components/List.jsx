@@ -11,10 +11,10 @@ const List = () => {
 		dispatch(groupSet(''))
 	}, [])
 	return (
-		<main className='flex flex-col transition-all'>
+		<main className='flex flex-col ' id=''>
 			{itemsToShow.length > 0 ? (
-				groups.map(item => (
-					<ListGroup key={item.color} {...item}>
+				groups.map((item, i) => (
+					<ListGroup i={i} key={item.body} {...item}>
 						{itemsToShow
 							.filter(item2 => item2.group === item.body)
 							.map(item3 => (

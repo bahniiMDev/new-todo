@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ShowItems, changeSucsses } from '../../store/listReducer'
 
-const Task = ({ body, title = false, id, color, isSucsses }) => {
+const Task = ({ body, title = false, id, color, isSucsses, i }) => {
 	const dispatch = useDispatch()
 	const { items, groupValue, inputSearch } = useSelector(state => state.list)
 	return (
@@ -32,10 +32,13 @@ const Task = ({ body, title = false, id, color, isSucsses }) => {
 						}
 					}
 				}}
-				className={`task-123  flex mb-1 items-center origin-left ${
+				className={`mb-1 task-123 flex items-center origin-left ${
 					!title ? 'cursor-pointer' : 'pointer-events-none'
 				}`}
 				id='task'
+				//style={{
+				//	animationDelay: `${i * 0.15}s`,
+				//}}
 			>
 				<div className='h-[20px] aspect-square mr-4 relative flex-center'>
 					<button
@@ -74,7 +77,7 @@ const Task = ({ body, title = false, id, color, isSucsses }) => {
 							: 'text-base text-gray-300 font-light select-none relative flex items-center pointer-events-none'
 					}
 				>
-					{body}
+					{body.includes('void') ? '' : body}
 					{!title && (
 						<span
 							className={`${
