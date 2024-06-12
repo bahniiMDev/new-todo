@@ -20,10 +20,11 @@ const Main = () => {
 				<Route path={'/posts'} exact>
 					<List />
 				</Route>
+				{/*<Redirect></Redirect>*/}
 				<Route path={'/'} exact>
 					<List />
 				</Route>
-				<Route path={'/posts/:group'} exact>
+				<Route path={'/:group'} exact>
 					<ListGroupPage />
 				</Route>
 			</Switch>

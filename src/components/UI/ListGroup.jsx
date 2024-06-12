@@ -83,7 +83,7 @@ const ListGroup = ({ body, color, children, page, i }) => {
 						)
 					)
 				)
-				history.push('/posts')
+				history.push('/')
 			}, (ref.current.childNodes.length - 1) * 100 + 1205)
 		}
 	}

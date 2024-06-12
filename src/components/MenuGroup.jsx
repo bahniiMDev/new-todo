@@ -234,7 +234,7 @@ const MenuGroup = () => {
 			>
 				<p className='text-xs  font-semibold  cursor-pointer text-gray-300 w-full h-full '>
 					<Link
-						to={`/posts`}
+						to={`/`}
 						onClick={() => close(null)}
 						className='w-full h-full block p-4'
 					>
@@ -261,7 +261,7 @@ const MenuGroup = () => {
 					<div key={index}>
 						<Link
 							onClick={() => close(item.body)}
-							to={`/posts/${item.body}`}
+							to={`/${item.body}`}
 							className='text-[12px] py-2.5 px-4 font-medium cursor-pointer text-gray-100 w-full flex items-center have-min whitespace-nowrap overflow-auto'
 							id='link-group'
 						>

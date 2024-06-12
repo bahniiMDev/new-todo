@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Route, Switch } from 'react-router-dom/cjs/react-router-dom'
 import { searchImg } from '../utils'
 import MenuButton from './MenuButton'
@@ -15,19 +15,29 @@ const NavBar = () => {
 	const [inputOpen, setInputOpen] = useState(false)
 	const inputRef = useRef()
 	const dispatch = useDispatch()
-	const { items, inputSearch, groupValue } = useSelector(state => state.list)
+	const { items, inputSearch, groupValue, groups } = useSelector(
+		state => state.list
+	)
+
+	const [color, setColor] = useState('#000')
+	useEffect(() => {
+		groups.forEach(item => {
+			if (item.body === groupValue) {
+				setColor(item.color)
+				setColor(item.color)
+				console.log(item.color)
+			}
+		})
+	}, [groupValue])
 
 	return (
 		<header className='w-full flex items-center mb-4 md:mb-6 justify-between'>
 			<MenuButton />
 			<Switch>
-				<Route path={'/posts/:text'} exact>
-					<Title />
+				<Route path={'/:text'} exact>
+					<Title clas={color} />
 				</Route>
 				<Route path={'/'} exact>
-					<Title text={'All Task'} />
-				</Route>
-				<Route path={'/posts'} exact>
 					<Title text={'All Task'} />
 				</Route>
 			</Switch>

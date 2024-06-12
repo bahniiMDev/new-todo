@@ -389,3 +389,11 @@ select {
   opacity: 0;
   height: 0;
 }
+
+/*
+before:content-normal before:h-1 before:w-100% before:rounded-full before:bg-rgb(255, 214, 10) before:block
+/*.act-bd::before {
+  content: '';
+  border-radius: 100px;
+  height: 0.25rem;
+}*/
