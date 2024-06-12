@@ -21,26 +21,27 @@ const changeSucsessShow = 'sef'
 const deleteGroup = 'delete-g'
 const addGroup = 'add-g'
 const changeInputGroup = 'cig'
+const setGroups = 'dwadwa'
 
 export const listReducer = (state = defaultState, action) => {
 	switch (action.type) {
 		case add:
-			//let arr = state.groupValue
-			//	? state.items
-			//			.filter(item => item.group === gstate.roupValue)
-			//			.filter(item =>
-			//				item.body.toLowerCase().includes(e.target.value.toLowerCase())
-			//			)
-			//	: state.items.filter(item =>
-			//			item.body.toLowerCase().includes(state.inputSearch)
-			//	  )
 			return {
 				...state,
 				items: [action.payload, ...state.items],
-				itemsToShow: arr,
+				//itemsToShow: [action.payload, ...state.itemsToShow],
 			}
 		case addShow:
-			return { ...state, itemsToShow: [action.payload, ...state.itemsToShow] }
+			let arr = state.groupValue
+				? [action.payload, ...state.itemsToShow]
+						.filter(item => item.group === state.groupValue)
+						.filter(item =>
+							item.body.toLowerCase().includes(state.inputSearch.toLowerCase())
+						)
+				: [action.payload, ...state.itemsToShow].filter(item =>
+						item.body.toLowerCase().includes(state.inputSearch)
+				  )
+			return { ...state, itemsToShow: arr }
 		case changeSucsess:
 			const initialValue = []
 			const sumWithInitial = state.items.reduce((accumulator, currentValue) => {
@@ -112,6 +113,12 @@ export const listReducer = (state = defaultState, action) => {
 					},
 				],
 			}
+		case setGroups:
+			return {
+				...state,
+				groups: action.payload,
+			}
+
 		case changeInputGroup:
 			return {
 				...state,
@@ -167,5 +174,9 @@ export const addGroupFun = payload => ({
 })
 export const changeInputFun = payload => ({
 	type: changeInputGroup,
+	payload,
+})
+export const groupsSet = payload => ({
+	type: setGroups,
 	payload,
 })

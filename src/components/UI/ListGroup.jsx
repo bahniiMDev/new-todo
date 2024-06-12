@@ -10,7 +10,9 @@ import { deleteImg, pinImg } from '../../utils'
 import Task from './Task'
 
 const ListGroup = ({ body, color, children, page, i }) => {
-	const { itemsToShow, items, inputSearch } = useSelector(state => state.list)
+	const { itemsToShow, items, inputSearch, groups } = useSelector(
+		state => state.list
+	)
 	const [hei, setHei] = useState(0)
 	const ref = useRef(null)
 	const dispatch = useDispatch()
@@ -29,6 +31,10 @@ const ListGroup = ({ body, color, children, page, i }) => {
 	const groupRef = useRef(null)
 
 	const deleteFun = () => {
+		localStorage.setItem(
+			'arr-g',
+			JSON.stringify(groups.filter(i => i.body !== body))
+		)
 		groupRef.current.swiper.slideTo(1, 300)
 		gsap.to(groupRef.current, {
 			duration: 0.8,
@@ -60,6 +66,7 @@ const ListGroup = ({ body, color, children, page, i }) => {
 					'-=0.5'
 				)
 		})
+
 		setTimeout(() => {
 			dispatch(deleteGroupFun(body))
 		}, (ref.current.childNodes.length - 1) * 100 + 1200)
@@ -80,7 +87,7 @@ const ListGroup = ({ body, color, children, page, i }) => {
 			}, (ref.current.childNodes.length - 1) * 100 + 1205)
 		}
 	}
-	gsap.to('#swiper', { scale: 0 })
+	//gsap.to('#swiper', { scale: 0 })
 	return (
 		<Swiper
 			ref={groupRef}

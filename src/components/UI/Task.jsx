@@ -73,8 +73,8 @@ const Task = ({ body, title = false, id, color, isSucsses, i }) => {
 				<p
 					className={
 						title
-							? 'text-lg font-semibold select-none pointer-events-none '
-							: 'text-base text-gray-300 font-light select-none relative flex items-center pointer-events-none'
+							? 'text-lg font-semibold select-none pointer-events-none whitespace-nowrap overflow-auto'
+							: 'text-base text-gray-300 font-light select-none relative flex items-center pointer-events-none whitespace-nowrap overflow-auto'
 					}
 				>
 					{body.includes('void') ? '' : body}

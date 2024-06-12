@@ -262,11 +262,11 @@ const MenuGroup = () => {
 						<Link
 							onClick={() => close(item.body)}
 							to={`/posts/${item.body}`}
-							className='text-[12px] py-2.5 px-4 font-medium cursor-pointer text-gray-100 w-full flex items-center have-min '
+							className='text-[12px] py-2.5 px-4 font-medium cursor-pointer text-gray-100 w-full flex items-center have-min whitespace-nowrap overflow-auto'
 							id='link-group'
 						>
 							<div
-								className={`h-[12px] aspect-square mr-4 relative flex-center items-center bg-[${item.color}] rounded-full`}
+								className={`h-[12px] aspect-square mr-4 relative flex-center items-center bg-[${item.color}] rounded-full `}
 								style={{
 									backgroundColor: item.color,
 								}}

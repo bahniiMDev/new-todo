@@ -370,13 +370,13 @@ select {
 }
 
 #swiper2 {
-  animation: anim2 0.6s ease forwards;
+  animation: anim2 0.5s ease forwards;
   opacity: 0;
   transform: translateY(0px);
 }
 
 #main {
-  transition: height 0.5s ease;
+  transition: height 0.2s ease;
 }
 
 #slide {
@@ -385,7 +385,7 @@ select {
 }
 
 #task {
-  animation: anim4 0.5s ease forwards;
+  animation: anim4 0.2s ease forwards;
   opacity: 0;
   height: 0;
 }
