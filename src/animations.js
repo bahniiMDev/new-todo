@@ -130,7 +130,7 @@ export const animOpenClose = () => {
 		.to(
 			'#cont-2',
 			{
-				width: window.matchMedia('(width < 400px').matches
+				width: window.matchMedia('(width < 500px').matches
 					? 'calc(100vw - 5rem)'
 					: '400px',
 				duration: 0.6,
